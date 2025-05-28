@@ -1,0 +1,50 @@
+<form class="example-container" [formGroup]="form" (submit)="operate()">
+<div [hidden]="true">
+        <mat-form-field>
+            <input matInput placeholder="ID" formControlName="idBook">
+        </mat-form-field>
+    </div>
+
+    <mat-form-field>
+        <input matInput placeholder="title" formControlName="title">
+    </mat-form-field>
+
+    <mat-form-field>
+        <input matInput placeholder="subtitle" formControlName="subtitle">
+    </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="description" formControlName="description">
+    </mat-form-field>
+    
+    
+    <mat-form-field appearance="fill">
+  <mat-label>Publisher</mat-label>
+  <mat-select formControlName="publisher">
+    @for (p of publishers; track $index) {
+      <mat-option [value]="p">{{ p.name }}</mat-option>
+    }
+  </mat-select>
+</mat-form-field>
+
+
+<mat-form-field appearance="fill">
+  <mat-label>Categories</mat-label>
+  <mat-select formControlName="category">
+    @for (c of categories; track $index) {
+      <mat-option [value]="c">{{ c.name }}</mat-option>
+    }
+  </mat-select>
+</mat-form-field>
+
+
+    <button mat-button type="submit">
+        <mat-icon>done</mat-icon>
+        <span>Done</span>
+    </button>
+
+    <button mat-button type="button" routerLink="/pages/book">
+        <mat-icon>cancel</mat-icon>
+        <span>Cancel</span>
+    </button>
+</form>
